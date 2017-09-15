@@ -9,6 +9,7 @@ user_list = randomized_input.randomized_user_list(num_lines, num_users)
 time_list = range(0,num_lines)
 
 computed_result = compute_highest_affinity.highest_affinity(site_list, user_list, time_list)
+print(computed_result)
 expected_result = ("facebook", "google")
 
 assert computed_result == expected_result

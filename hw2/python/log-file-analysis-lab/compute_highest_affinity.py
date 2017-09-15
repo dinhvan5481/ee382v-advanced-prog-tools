@@ -18,7 +18,7 @@ def highest_affinity(site_list, user_list, time_list):
   for index, su in enumerate(su_list):
     for i in range(index + 1, len(su_list)):
       su_next = su_list[i]
-      if su_next[1] == su[1]:
+      if su_next[1] == su[1] and su[0] != su_next[0]:
         key_entry = (su[0], su_next[0])
         if key_entry in result.keys():
           result[key_entry] = result[key_entry] + 1
@@ -26,6 +26,8 @@ def highest_affinity(site_list, user_list, time_list):
           result[key_entry] = 1
 
   sorted_result = sorted(result.items(), key=operator.itemgetter(1), reverse=True)
+  if len(result) == 0:
+    return (site_list[0], site_list[1])
   return sorted_result[0][0]
 
 if __name__ == '__main__':
